@@ -1,91 +1,91 @@
+import 'package:flutter/material.dart';
 
-
-void main(){
-  var dog = Dog();
-  print('');
-  
-  var dog2= Dog.childNamedConstructor();
-  print('');
-  
-  var dog3 = Dog.namedConstructor();
-  print('');
-  
-  var dog4 = Cat();
-  print(dog4.animal());
-  
-  var dog5 = Cat();
-  print(dog5.dog());
-  
-  
+void main() {
+  runApp(MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-
-
-class Animal {
-  
-  animal(){
-    print('Welcome to the Animal House');
-  }
-  
-  //constructor
-  Animal (){
-    print('This is Animal Constructor');
-  }
-  Animal.parentNamedConstructor(){
-    print('This is Animal Parent constructor');
-  }
-  Animal.namedConstructor(){
-    print('This is Animal Named Construcor');
-  }
-  
-  
- 
-}
-
-
-class Dog extends Animal {
-  
-  dog(){
-    print('');
-  }
-  
-  //construtctor
-  Dog ():super(){
-    print('This is Dog Constructor');
-  }
-  Dog.childNamedConstructor(){
-    print('This is Dog Child Named Constructor');
-  }
-  Dog.namedConstructor():super.namedConstructor(){
-    print('This is Dog Named Construcor');
-  }
-}
-
-class Cat implements Animal,Dog{
   @override
-  animal(){
-    print('Welcome to the cat House');
-  }
-  @override
-  dog(){
-    print('My pet bread is Pershian Cat');
+  Widget build(BuildContext context) {
+    return MaterialApp(
+
+      title: 'Home Page',
+     debugShowCheckedModeBanner: false, 
+     theme:ThemeData(
+        
+        primaryColor:const Color(0xFF832685),
+        primaryColorLight:const Color(0xFFC81379),
+        accentColor:const Color(0xFFFAF2FB),
+        
+      ),
+
+      home:const ThemeDataPage()
+    );
   }
 }
 
+class ThemeDataPage extends StatefulWidget {
+  const ThemeDataPage({Key? key}) : super(key: key);
 
+  @override
+  _ThemeDataPageState createState() => _ThemeDataPageState();
+}
 
+class _ThemeDataPageState extends State<ThemeDataPage> {
+  Icon searchbar = const Icon(Icons.search);
+  Widget appBarTitle = const Text('Home Page');
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: false,
+        title: appBarTitle,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                colors: [Color(0xFF832685), Color(0xFFC81379)]),
+          ),
+        ),
+        actions: [
+          IconButton(
+              icon: searchbar,
+              onPressed: () {
+                setState(() {
+                  if (this.searchbar == Icons.search) {
+                    this.searchbar = Icon(Icons.close);
+                    this.appBarTitle = const TextField(
+                      autofocus: true,
+                      cursorColor: Color(0xFFFAF2FB),
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          filled: true,
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          ),
+                          hintText: "Search ..",
+                          hintStyle: TextStyle(color: Colors.white)),
+                    );
+                  } else {
+                    searchbar = const Icon(Icons.search);
+                    appBarTitle = const Text('Home Page');
+                  }
+                });
+              })
+        ],
+      ),
+      body: Container(
+        child:const Text('Home Page'),
+      ),
+    );
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-// if we passing paramiter to the main class then we need to pass paramiter to the super;
-//if we ChildClass to the child constructor then we need to pass paramiter to the main function;
