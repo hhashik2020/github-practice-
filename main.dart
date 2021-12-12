@@ -1,52 +1,71 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
-void manin() {
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  List<Widget> layoutChildren(double boxside) {
-    return [
-      Container(
-        height: boxside,
-        width: boxside,
-        alignment: Alignment.center,
-        color: Colors.green,
-      ),
-      Container(
-        height: boxside,
-        width: boxside,
-        alignment: Alignment.center,
-        color: Colors.red,
-      ),
-    ];
-  }
+  
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    Orientation orientation = MediaQuery.of(context).orientation;
-    double boxside = size.shortestSide -50;
-
-    return Scaffold(
-      body: Center(
-        child: Builder(builder: (context) {
-          If(orientation.index == Orientation.landscape.index){
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: layoutChildren(boxside),
-            );
-
-          }
-          else{
-           return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: layoutChildren(boxside),
-            );
-          }
-        }
-      ),
-    ));
+    
+    return MaterialApp(
+      home: Scaffold(
+          body: Column(
+        children: [
+          Container(
+            height: 50,
+            color: Colors.purple,
+          ),
+          Expanded(
+            flex: 4,
+            
+              child: Container(
+            color: Colors.blueAccent,
+          )),
+          Container(
+            width: 500,
+            height: 50,             
+            color: Colors.black,
+            child: Wrap(
+              alignment: WrapAlignment.spaceAround,
+              direction: Axis.horizontal,                                           
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.phone,
+                      color: Colors.white,
+                    )),
+                    IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.mail,
+                      color: Colors.white,
+                    )),
+                    IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.local_post_office_rounded,
+                      color: Colors.white,
+                    )),
+                    IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.home_filled,
+                      color: Colors.white,
+                    )),
+              ],
+            ),
+          )
+        ],
+      )),
+    );
   }
 }
