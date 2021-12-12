@@ -29,39 +29,41 @@ class MyApp extends StatelessWidget {
               child: Container(
             color: Colors.blueAccent,
           )),
-          Container(
-            width: 500,
-            height: 50,             
-            color: Colors.black,
-            child: Wrap(
-              alignment: WrapAlignment.spaceAround,
-              direction: Axis.horizontal,                                           
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.phone,
-                      color: Colors.white,
-                    )),
-                    IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.mail,
-                      color: Colors.white,
-                    )),
-                    IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.local_post_office_rounded,
-                      color: Colors.white,
-                    )),
-                    IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.home_filled,
-                      color: Colors.white,
-                    )),
-              ],
+          Expanded(
+            child: Container(
+              width: 500,
+              height: 50,             
+              color: Colors.black,
+              child: Wrap(
+                alignment: WrapAlignment.spaceAround,
+                direction: Axis.horizontal,                                           
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.phone,
+                        color: Colors.white,
+                      )),
+                      IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.mail,
+                        color: Colors.white,
+                      )),
+                      IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.local_post_office_rounded,
+                        color: Colors.white,
+                      )),
+                      IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.home_filled,
+                        color: Colors.white,
+                      )),
+                ],
+              ),
             ),
           )
         ],
